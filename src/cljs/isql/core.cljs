@@ -1,59 +1,33 @@
 (ns isql.app
-  (:require-macros [cljs.core.async.macros :refer [go alt!]])
-  (:require [goog.events :as events]
-            [cljs.core.async :refer [put! <! >! chan timeout]]
-            [om.core :as om :include-macros true]
-            [om.dom :as dom :include-macros true]
-            [cljs-http.client :as http])
-  (:import [goog History]
-           [goog.history EventType]))
+  (:require [om.core :as om :include-macros true]
+            [om.dom :as dom :include-macros true]))
 
 (enable-console-print!)
 
-(def INITIAL[
-             [12345678, "Lorem Ipsum", 23456789, "Lorem Ipsum", 0.123456, 1.234567, 2.345678, 1234567890],
-             [12345678, "Lorem Ipsum", 23456789, "Lorem Ipsum", 0.123456, 1.234567, 2.345678, 1234567890],
-             [12345678, "Lorem Ipsum", 23456789, "Lorem Ipsum", 0.123456, 1.234567, 2.345678, 1234567890]
-             ])
-(def app-state
-  (atom {:rows INITIAL}))
+(def app-state (atom {}))
 
-
-(defn row-view
-  [row owner]
+(defn active-item [active]
+  (if active
+    "active"
+    ""))
+(defn nav-items-view [item owner]
   (reify
     om/IRender
-    (render [this]
-            (dom/tr nil
-                    (apply dom/td nil row)))))
+    (render [_]
+            (dom/li nil
+                    (dom/a #js {:href "#"} (:name item))))))
 
-(defn result-table
-  [rows owner]
+(defn nav-view [app owner]
   (reify
     om/IRender
-    (render [this]
-            (dom/div nil
-                     (dom/table nil
-                                (dom/tbody nil
-                                           (om/build-all row-view rows)))))))
+    (render [_]
+            (dom/div #js {:className "navbar navbar-inverse navbar-fixed-top"}
+                     (dom/div #js {:className "navbar-inner"}
+                              (dom/div #js {:className "container"}
+                                       (dom/a #js {:className "brand" :href "#"} "iSQL")
+                                       (apply dom/ul #js {:className "nav"}
+                                              (om/build-all nav-items-view [{:name "NewQuery"}
+                                                                            {:name "Run"}]))))))))
 
-(defn editor-box
-  [cursor owner]
-  (reify
-    om/IRender
-    (render [this]
-            (dom/div nil
-                     (dom/textarea #js {:width "100%" :height "400px" :placeholder "Edit Query" :ref "query"})
-                     ))))
-
-(defn tutorial-app [app owner]
-  (reify
-    om/IRender
-    (render [this]
-            (dom/div nil
-                     (dom/h2 nil "Query Editor")
-                     (om/build editor-box app)
-                     (om/build result-table (:rows app))
-                     ))))
-
-(om/root app-state tutorial-app (.getElementById js/document "content"))
+(om/root nav-view app-state
+         {:target (. js/document (getElementById "navbar"))})
