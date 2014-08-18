@@ -12,4 +12,8 @@
             [1 2 3 4 5 6 7 8 9 10]
             [1 2 3 4 5 6 7 8 9 10]
             [1 2 3 4 5 6 7 8 9 10]
-            ]}}))
+            ]}
+    :main-menu-items
+    {:new-query {:text "New Query" :command :new-query}
+     :run {:text "Run" :command :run}}
+    }))
