@@ -4,11 +4,31 @@
             [om.dom :as dom :include-macros true]
             [cljs.core.async :refer [put! chan <! alts!]]))
 
-(defn run []
-  (.log js/console "run"))
+(def sample-result
+  (atom
+   {:columns ["col1" "col2" "col3" "col4" "col5" "col6" "col7" "col8" "col9" "col10"]
+    :rows [
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           [1 2 3 4 5 6 7 8 9 10]
+           ]}
+   ))
 
-(defn new-query []
-  (.log js/console "new-query"))
+(def empty-result
+  (atom
+   {:columns [] :rows []}))
+
+(defn run [app owner]
+  (.log js/console "run")
+  (om/update! app [:query-result] @sample-result))
+
+(defn new-query [app owner]
+  (.log js/console "new-query")
+  (om/update! app [:query-result] @empty-result))
 
 (defn menu-item-component [item owner]
   (reify
@@ -37,8 +57,8 @@
                         (let [e (<! clickchan)
                               command (:command e)
                               origin-owner (:owner e)]
-                          (when (= command :new-query) (new-query))
-                          (when (= command :run) (run))
+                          (when (= command :new-query) (new-query app owner))
+                          (when (= command :run) (run app owner))
                           (recur))))))
 
     om/IRenderState
