@@ -14,6 +14,11 @@
  {:target (. js/document (getElementById "navbar"))})
 
 (om/root
+ editor/editor-view
+ app/app-state
+ {:target (. js/document (getElementById "ace-editor"))})
+
+(om/root
  isqltable/query-result-view
  app/app-state
  {:target (. js/document (getElementById "query-result"))})

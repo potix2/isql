@@ -9,4 +9,5 @@ pom.xml
 .lein-plugins/
 .nrepl-port
 resources/js/app.js
+resources/js/app.js.map
 resources/js/out/

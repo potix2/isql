@@ -4,7 +4,7 @@
         <meta charset="utf-8"></meta>
         <meta http-equiv="X-UA-Compatible" content="IE-edge"></meta>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script type='text/javascript' id='lt_ws' src='http://localhost:50913/socket.io/lighttable/ws.js'></script>
+        <script type='text/javascript' id='lt_ws' src='http://localhost:59785/socket.io/lighttable/ws.js'></script>
         <title>iSQL - Interactive SQL Editor</title>
         <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
         <style>
@@ -30,18 +30,14 @@
                 <div id="editor-box">
                     <div id="editor"></div>
                 </div>
-                <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
-                <script>
-                    var editor = ace.edit("editor");
-                    editor.getSession().setMode("ace/mode/sql");
-                </script>
+                <div id="ace-editor"></div>
                 <div id="query-result"></div>
             </div>
         </div>
-        <script src="js/react/react.min.js"></script>
+        <script src="js/react/react.js"></script>
+        <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
         <script src="js/out/goog/base.js" type="text/javascript"></script>
         <script src="js/app.js" type="text/javascript"></script>
-        <script src="js/bootstrap.min.js" type="text/javascript"></script>
         <script type="text/javascript">goog.require("isql.core");</script>
     </body>
 </html>
