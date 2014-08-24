@@ -7,6 +7,10 @@
     om/IRender
     (render [_]
             (let [editor (. js/ace (edit "editor"))
-                  session (. editor (getSession))]
-              (. session (setMode "ace/mode/sql"))
+                  session (. editor (getSession))
+                  mode (get-in app [:edit-session :mode])
+                  theme (get-in app [:edit-session :theme])]
+              (.setTheme editor (str "ace/theme/" theme))
+              (.addEventListener editor "change" (fn [e target] (om/update! app [:edit-session :content] (.getValue target))))
+              (.setMode session (str "ace/mode/" mode))
               (dom/div nil)))))

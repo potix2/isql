@@ -24,6 +24,7 @@
 
 (defn run [app owner]
   (.log js/console "run")
+  (.log js/console (get-in @app [:edit-session :content]))
   (om/update! app [:query-result] @sample-result))
 
 (defn new-query [app owner]
