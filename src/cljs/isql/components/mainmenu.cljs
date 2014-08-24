@@ -2,30 +2,26 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [put! chan <! alts!]]))
-
-(def sample-result
-  (atom
-   {:columns ["col1" "col2" "col3" "col4" "col5" "col6" "col7" "col8" "col9" "col10"]
-    :rows [
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           [1 2 3 4 5 6 7 8 9 10]
-           ]}
-   ))
+            [cljs.core.async :refer [put! chan <! alts!]]
+            [ajax.core :as http]))
 
 (def empty-result
   (atom
    {:columns [] :rows []}))
 
+(defn exec-query-handler [app result]
+  (let [cols (get result "columns")
+        rows (get result "rows")]
+    (om/update! app [:query-result] (om/value {:columns cols :rows rows}))))
+
 (defn run [app owner]
   (.log js/console "run")
-  (.log js/console (get-in @app [:edit-session :content]))
-  (om/update! app [:query-result] @sample-result))
+  (let [content (get-in @app [:edit-session :content])]
+    (.log js/console content)
+    (http/POST "http://localhost:3000/queries" {:params {:query content}
+                                                :handler
+                                                (fn [result]
+                                                  (exec-query-handler app result))})))
 
 (defn new-query [app owner]
   (.log js/console "new-query")

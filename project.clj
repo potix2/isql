@@ -8,6 +8,7 @@
                  [org.clojure/clojurescript "0.0-2311"]
                  [org.clojure/core.async "0.1.267.0-0d7780-alpha"]
                  [om "0.7.1"]
+                 [cljs-ajax "0.2.6"]
 
                  [ring/ring-jetty-adapter "1.2.1"]
                  [ring/ring-json "0.3.1"]
@@ -24,7 +25,7 @@
     :builds [{:id "dev"
               :source-paths ["src/cljs"]
               :compiler {
-                :output-to  "resources/js/app.js"
-                :output-dir "resources/js/out"
+                :output-to  "resources/public/js/app.js"
+                :output-dir "resources/public/js/out"
                 :optimizations :none
                 :source-map true}}]})

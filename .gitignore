@@ -8,6 +8,6 @@ pom.xml
 .lein-repl-history
 .lein-plugins/
 .nrepl-port
-resources/js/app.js
-resources/js/app.js.map
-resources/js/out/
+resources/public/js/app.js
+resources/public/js/app.js.map
+resources/public/js/out/
