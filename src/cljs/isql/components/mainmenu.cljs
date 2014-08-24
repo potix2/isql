@@ -10,8 +10,8 @@
    {:columns [] :rows []}))
 
 (defn exec-query-handler [app result]
-  (let [cols (get result "columns")
-        rows (get result "rows")]
+  (let [cols (get result :columns)
+        rows (get result :rows)]
     (om/update! app [:query-result] (om/value {:columns cols :rows rows}))))
 
 (defn run [app owner]

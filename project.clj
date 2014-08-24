@@ -11,8 +11,12 @@
                  [cljs-ajax "0.2.6"]
 
                  [ring/ring-jetty-adapter "1.2.1"]
-                 [ring/ring-json "0.3.1"]
-                 [compojure "1.1.6"]]
+                 [fogus/ring-edn "0.2.0"]
+                 [compojure "1.1.6"]
+                 [org.xerial/sqlite-jdbc "3.7.2"]
+                 [mysql/mysql-connector-java "5.1.25"]
+                 [org.clojure/java.jdbc "0.3.5"]
+                 [org.clojure/tools.logging "0.3.0"]]
 
   :plugins [[lein-cljsbuild "1.0.4-SNAPSHOT"]
             [lein-ring "0.8.11"]]
