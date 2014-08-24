@@ -21,7 +21,7 @@
 (defroutes app-routes
   (POST "/queries" {query :query} (response dummy-result))
   (route/resources "/")
-  (route/not-found "Pagge not found"))
+  (route/not-found "Page not found"))
 
 (def app
   (-> (handler/api app-routes)
