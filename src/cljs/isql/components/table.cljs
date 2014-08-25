@@ -8,7 +8,7 @@
     (render [_]
             (dom/thead nil
                        (apply dom/tr nil
-                              (map #(dom/th nil %) columns))))))
+                              (map #(dom/th nil (subs (str %) 1)) columns))))))
 
 (defn table-body [rows owner]
   (reify

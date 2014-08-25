@@ -13,17 +13,12 @@
 (def sqlite-db {:subprotocol "sqlite"
                  :subname "resources/data/Chinook_Sqlite.sqlite"})
 
-(defn fetch-result [result-set]
-  (let [cols (keys (first result-set))
-        rows (map (fn [row] (vals row)) result-set)
-        numrows (count result-set)] ; FIXME
-    {:columns cols :rows rows :numrows numrows}))
-
 (defn exec-query [db sql]
-  (jdbc/query db [sql] :result-set-fn fetch-result))
+  (let [result (jdbc/query db [sql] :as-arrays? true)]
+    {:columns (first result) :rows (rest result)}))
 
 (defn generate-response [data & [status]]
-  {:status (or status 2000)
+  {:status (or status 200)
    :headers {"Content-Type" "application/edn"}
    :body (pr-str data)})
 
