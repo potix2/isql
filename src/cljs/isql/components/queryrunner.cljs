@@ -13,7 +13,6 @@
    {:columns [] :rows []}))
 
 (defn new-query [app]
-  (.log js/console "new-query")
   (om/update! app [:query-result] @empty-result))
 
 (defn exec-query-handler [app result]
@@ -22,9 +21,7 @@
     (om/update! app [:query-result] (om/value {:columns cols :rows rows}))))
 
 (defn run [app]
-  (.log js/console "run")
   (let [content (get-in @app [:edit-session :content])]
-    (.log js/console content)
     (http/POST "http://localhost:3000/queries" {:params {:query content}
                                                 :handler
                                                 (fn [result]
