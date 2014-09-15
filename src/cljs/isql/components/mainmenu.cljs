@@ -2,30 +2,9 @@
   (:require-macros [cljs.core.async.macros :refer [go]])
   (:require [om.core :as om :include-macros true]
             [om.dom :as dom :include-macros true]
-            [cljs.core.async :refer [put! chan <! alts!]]
-            [ajax.core :as http]))
+            [isql.components.queryrunner :as query]
+            [cljs.core.async :refer [put! chan <! alts!]]))
 
-(def empty-result
-  (atom
-   {:columns [] :rows []}))
-
-(defn exec-query-handler [app result]
-  (let [cols (get result :columns)
-        rows (get result :rows)]
-    (om/update! app [:query-result] (om/value {:columns cols :rows rows}))))
-
-(defn run [app owner]
-  (.log js/console "run")
-  (let [content (get-in @app [:edit-session :content])]
-    (.log js/console content)
-    (http/POST "http://localhost:3000/queries" {:params {:query content}
-                                                :handler
-                                                (fn [result]
-                                                  (exec-query-handler app result))})))
-
-(defn new-query [app owner]
-  (.log js/console "new-query")
-  (om/update! app [:query-result] @empty-result))
 
 (defn menu-item-component [item owner]
   (reify
@@ -50,13 +29,13 @@
     om/IWillMount
     (will-mount [_]
                 (let [clickchan (om/get-state owner :clickchan)]
-                  (go (loop []
-                        (let [e (<! clickchan)
-                              command (:command e)
-                              origin-owner (:owner e)]
-                          (when (= command :new-query) (new-query app owner))
-                          (when (= command :run) (run app owner))
-                          (recur))))))
+                  (go
+                   (loop []
+                     (let [e (<! clickchan)
+                           command (:command e)]
+                       (when (= command :run) (put! query/query-chan :run))
+                       (when (= command :new-query) (put! query/query-chan :new-query))
+                       (recur))))))
 
     om/IRenderState
     (render-state [this {:keys [clickchan]}]
