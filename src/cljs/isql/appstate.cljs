@@ -3,8 +3,14 @@
 (def app-state
   (atom
    {:query-result
-    {:columns []
-     :rows []}
+    {:columns [:col1 :col2 :col3]
+     :rows [
+            ["a" "b" "c"]
+            ["a" "b" "c"]
+            ["a" "b" "c"]
+            ["a" "b" "c"]
+            ["a" "b" "c"]
+            ]}
 
     :edit-session
     {:content ""
