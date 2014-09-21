@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE-edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>iSQL - Interactive SQL Editor</title>
+        <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="css/main.css" rel="stylesheet" media="screen">
+    </head>
+    <body>
+        <script src="js/ace/ace.js" type="text/javascript" charset="utf-8"></script>
+        <div id="navbar">
+            <div class="navbar navbar-inverse navbar-fixed-top">
+                <div class="container-fluid">
+                    <div class="navbar-collapse">
+                        <a class="navbar-brand" href="#">iSQL</a>
+                        <ul class="nav navbar-nav">
+                            <li><a href="#">New Query</a></li>
+                            <li><a href="#">Run</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul id="content">
+                <li>
+                    <div class="prompt">&gt;</div>
+                    <div class="editor-box">
+                        <div id="editor1" class="editor">SELECT *
+FROM Album;</div>
+                        <div id="query-result1" class="query-result">
+                            <div class="table-responsive result-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>col1</th>
+                                            <th>col2</th>
+                                            <th>col3</th>
+                                            <th>col4</th>
+                                            <th>col5</th>
+                                            <th>col6</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!--//query-result -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button class="btn btn-default active" type="button"><span class="glyphicon glyphicon-th-list"></span></button>
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-signal"></span></button>
+                            </div>
+                        </div>
+                    </div><!--//editor-box -->
+                </li>
+                <li>
+                    <div class="prompt">&gt;</div>
+                    <div class="editor-box">
+                        <div id="editor2" class="editor">SELECT *
+FROM Customer;</div>
+                        <div id="query-result2" class="query-result">
+                            <div class="table-responsive result-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>col1</th>
+                                            <th>col2</th>
+                                            <th>col3</th>
+                                            <th>col4</th>
+                                            <th>col5</th>
+                                            <th>col6</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!--//query-result -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-th-list"></span></button>
+                                <button class="btn btn-default active" type="button"><span class="glyphicon glyphicon-signal"></span></button>
+                            </div>
+                        </div>
+                    </div><!--//editor-box -->
+                </li>
+                <li>
+                    <div class="prompt">&gt;</div>
+                    <div class="editor-box">
+                        <div id="editor3" class="editor">SELECT *
+FROM Customer;</div>
+                        <div class="query-result">
+                            <div class="table-responsive result-body">
+                                <table class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>col1</th>
+                                            <th>col2</th>
+                                            <th>col3</th>
+                                            <th>col4</th>
+                                            <th>col5</th>
+                                            <th>col6</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                        <tr>
+                                            <td>aaaaaaa</td>
+                                            <td>bbbbbbb</td>
+                                            <td>ccccccc</td>
+                                            <td>ddddddd</td>
+                                            <td>eeeeeee</td>
+                                            <td>fffffff</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div><!--//query-result -->
+                        <div class="btn-toolbar">
+                            <div class="btn-group">
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-th-list"></span></button>
+                                <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-signal"></span></button>
+                            </div>
+                        </div>
+                     </div><!--//editor-box -->
+                </li>
+            </ul>
+            <script>
+                var editor1 = ace.edit("editor1");
+                editor1.getSession().setMode("ace/mode/sql");
+                editor1.renderer.setShowGutter(false);
+
+                var editor2 = ace.edit("editor2");
+                editor2.getSession().setMode("ace/mode/sql");
+                editor2.renderer.setShowGutter(false);
+
+                var editor3 = ace.edit("editor3");
+                editor3.getSession().setMode("ace/mode/sql");
+                editor3.renderer.setShowGutter(false);
+            </script>
+        </div>
+    </body>
+</html>

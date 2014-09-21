@@ -25,8 +25,12 @@
     (render [_]
             (dom/div #js {:className "btn-toolbar"}
                 (dom/div #js {:className "btn-group"}
-                    (dom/button #js {:className "btn"} (dom/i #js {:className "icon-th-list"}))
-                    (dom/button #js {:className "btn"} (dom/i #js {:className "icon-signal"})))))))
+                    (dom/button #js
+                                {:className "btn btn-default"}
+                                (dom/span #js {:className "glyphicon glyphicon-th-list"}))
+                    (dom/button #js
+                                {:className "btn btn-default"}
+                                (dom/span #js {:className "glyphicon glyphicon-signal"})))))))
 
 (defn query-result-view [app owner]
   (reify

@@ -40,10 +40,10 @@
     om/IRenderState
     (render-state [this {:keys [clickchan]}]
                   (dom/div #js {:className "navbar navbar-inverse navbar-fixed-top"}
-                           (dom/div #js {:className "navbar-inner"}
-                                    (dom/div #js {:className "container"}
-                                             (dom/a #js {:className "brand" :href "#"} "iSQL")
-                                             (dom/ul #js {:className "nav"}
+                           (dom/div #js {:className "container-fluid"}
+                                    (dom/div #js {:className "navbar-collapse"}
+                                             (dom/a #js {:className "navbar-brand" :href "#"} "iSQL")
+                                             (dom/ul #js {:className "nav navbar-nav"}
                                                      (om/build menu-item-component
                                                                (get-in app [:main-menu-items :new-query])
                                                                {:init-state {:clickchan clickchan}})
